@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.3"></script>
+    <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/vue.js"></script>
+    <title>Prop Validación</title>
+</head>
+<body>
+    <header class="bg-success text-center text-white">
+        <span class="h2">VUE</span>
+    </header>
+    <section class="container text-center">
+        <main>
+            <candidato v-for="candidato in candidatos"
+                    :nombre="candidato.name.first"
+                    :correoe="candidato.email"
+                    :imagen="candidato.picture.thumbnail"
+                    :location="candidato.location">        
+            </candidato>
+            <pre>{{$data}}</pre>
+        </main>
+        <template id="candidato-template">
+            <blockquote class="tamanio">
+                <img :src="imagen" align="right" class="img-thumbnail" >
+                <h1 >{{nombre}}</h1>
+                <h2 >{{correoe}}</h2>
+                <ul>
+                    <li v-for="(value, key, index) in location">
+                        {{value}}
+                    </li>
+                </ul>
+                <hr>
+            </blockquote>
+        </template>
+    </section>
+    <footer class="card-footer">
+        @Hecho por mí
+    </footer>
+</body>
+<script src="js/funciones.js"></script>
+</html>
